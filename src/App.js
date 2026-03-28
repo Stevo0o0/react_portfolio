@@ -5,6 +5,8 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Projects from "./pages/Projects";
+import AddProject from "./pages/AddProject";
+import EditProject from "./pages/EditProject";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import References from "./pages/References";
@@ -19,6 +21,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/projects" element={<Projects />} />
+        <Route path="/projects/add" element={<AddProject />} />
+        <Route path="/projects/edit/:id" element={<EditProject />} />
         <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/references" element={<References />} />

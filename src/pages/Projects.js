@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getProjects, deleteProject } from "../services/api";
 
 function Projects() {
@@ -40,6 +41,8 @@ function Projects() {
     <div>
       <h2>Projects</h2>
 
+      <Link to="/projects/add">Add Project</Link>
+
       {error && <p>{error}</p>}
 
       {projects.length === 0 ? (
@@ -48,6 +51,7 @@ function Projects() {
         projects.map((project) => (
           <div key={project.id || project._id}>
             <h3>{project.title}</h3>
+
             <p>
               <strong>Description:</strong> {project.description}
             </p>
@@ -64,6 +68,8 @@ function Projects() {
               </p>
             )}
 
+            <Link to={`/projects/edit/${project.id || project._id}`}>Edit</Link>
+            {" | "}
             <button onClick={() => handleDelete(project.id || project._id)}>
               Delete
             </button>
