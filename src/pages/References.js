@@ -47,7 +47,15 @@ function References() {
       ) : (
         references.map((reference) => (
           <div key={reference.id || reference._id}>
-            <h3>{reference.name || reference.fullname || "Reference"}</h3>
+            <h3>
+              {reference.firstname} {reference.lastname}
+            </h3>
+
+            {reference.email && (
+              <p>
+                <strong>Email:</strong> {reference.email}
+              </p>
+            )}
 
             {reference.position && (
               <p>
@@ -58,18 +66,6 @@ function References() {
             {reference.company && (
               <p>
                 <strong>Company:</strong> {reference.company}
-              </p>
-            )}
-
-            {reference.email && (
-              <p>
-                <strong>Email:</strong> {reference.email}
-              </p>
-            )}
-
-            {reference.phone && (
-              <p>
-                <strong>Phone:</strong> {reference.phone}
               </p>
             )}
 
