@@ -9,7 +9,8 @@ function AddProject() {
     title: "",
     description: "",
     techStack: "",
-    keyFeatures: ""
+    keyFeatures: "",
+    completion: ""
   });
 
   const [error, setError] = useState("");
@@ -74,6 +75,16 @@ function AddProject() {
             type="text"
             name="keyFeatures"
             value={formData.keyFeatures}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div>
+          <label>Completion</label><br />
+          <input
+            type="text"
+            name="completion"
+            value={formData.completion}
             onChange={handleChange}
           />
         </div>

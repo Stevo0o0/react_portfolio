@@ -10,7 +10,8 @@ function EditProject() {
     title: "",
     description: "",
     techStack: "",
-    keyFeatures: ""
+    keyFeatures: "",
+    completion: ""
   });
 
   const [error, setError] = useState("");
@@ -26,7 +27,8 @@ function EditProject() {
           title: project.title || "",
           description: project.description || "",
           techStack: project.techStack || "",
-          keyFeatures: project.keyFeatures || ""
+          keyFeatures: project.keyFeatures || "",
+          completion: project.completion || ""
         });
 
         setError("");
@@ -104,6 +106,16 @@ function EditProject() {
             type="text"
             name="keyFeatures"
             value={formData.keyFeatures}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div>
+          <label>Completion</label><br />
+          <input
+            type="text"
+            name="completion"
+            value={formData.completion}
             onChange={handleChange}
           />
         </div>
