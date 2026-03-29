@@ -28,7 +28,9 @@ function EditProject() {
           description: project.description || "",
           techStack: project.techStack || "",
           keyFeatures: project.keyFeatures || "",
-          completion: project.completion || ""
+          completion: project.completion
+            ? project.completion.substring(0, 10)
+            : ""
         });
 
         setError("");
@@ -113,7 +115,7 @@ function EditProject() {
         <div>
           <label>Completion</label><br />
           <input
-            type="text"
+            type="date"
             name="completion"
             value={formData.completion}
             onChange={handleChange}

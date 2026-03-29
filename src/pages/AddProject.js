@@ -82,7 +82,7 @@ function AddProject() {
         <div>
           <label>Completion</label><br />
           <input
-            type="text"
+            type="date"
             name="completion"
             value={formData.completion}
             onChange={handleChange}

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getReferences, deleteReference } from "../services/api";
 
 function References() {
@@ -40,6 +41,8 @@ function References() {
     <div>
       <h2>References</h2>
 
+      <Link to="/references/add">Add Reference</Link>
+
       {error && <p>{error}</p>}
 
       {references.length === 0 ? (
@@ -69,9 +72,9 @@ function References() {
               </p>
             )}
 
-            <button
-              onClick={() => handleDelete(reference.id || reference._id)}
-            >
+            <Link to={`/references/edit/${reference.id || reference._id}`}>Edit</Link>
+            {" | "}
+            <button onClick={() => handleDelete(reference.id || reference._id)}>
               Delete
             </button>
 

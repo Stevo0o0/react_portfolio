@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getServices, deleteService } from "../services/api";
 
 function Services() {
@@ -40,6 +41,8 @@ function Services() {
     <div>
       <h2>Services</h2>
 
+      <Link to="/services/add">Add Service</Link>
+
       {error && <p>{error}</p>}
 
       {services.length === 0 ? (
@@ -52,6 +55,8 @@ function Services() {
               <strong>Description:</strong> {service.description}
             </p>
 
+            <Link to={`/services/edit/${service.id || service._id}`}>Edit</Link>
+            {" | "}
             <button onClick={() => handleDelete(service.id || service._id)}>
               Delete
             </button>
