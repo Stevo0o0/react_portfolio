@@ -1,6 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -17,6 +18,9 @@ import EditReference from "./pages/EditReference";
 import Users from "./pages/Users";
 import AddUser from "./pages/AddUser";
 import EditUser from "./pages/EditUser";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
@@ -27,18 +31,93 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/projects" element={<Projects />} />
-        <Route path="/projects/add" element={<AddProject />} />
-        <Route path="/projects/edit/:id" element={<EditProject />} />
         <Route path="/services" element={<Services />} />
-        <Route path="/services/add" element={<AddService />} />
-        <Route path="/services/edit/:id" element={<EditService />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/references" element={<References />} />
-        <Route path="/references/add" element={<AddReference />} />
-        <Route path="/references/edit/:id" element={<EditReference />} />
-        <Route path="/users" element={<Users />} />
-        <Route path="/users/add" element={<AddUser />} />
-        <Route path="/users/edit/:id" element={<EditUser />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/projects/add"
+          element={
+            <ProtectedRoute>
+              <AddProject />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/projects/edit/:id"
+          element={
+            <ProtectedRoute>
+              <EditProject />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/services/add"
+          element={
+            <ProtectedRoute>
+              <AddService />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/services/edit/:id"
+          element={
+            <ProtectedRoute>
+              <EditService />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/references/add"
+          element={
+            <ProtectedRoute>
+              <AddReference />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/references/edit/:id"
+          element={
+            <ProtectedRoute>
+              <EditReference />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/users"
+          element={
+            <ProtectedRoute>
+              <Users />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/users/add"
+          element={
+            <ProtectedRoute>
+              <AddUser />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/users/edit/:id"
+          element={
+            <ProtectedRoute>
+              <EditUser />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </Router>
   );

@@ -1,9 +1,28 @@
 const BASE_URL = "https://portfolio-backend-760g.onrender.com/api";
 
+export function getToken() {
+  return localStorage.getItem("token");
+}
+
+export function setToken(token) {
+  localStorage.setItem("token", token);
+}
+
+export function removeToken() {
+  localStorage.removeItem("token");
+}
+
+export function isAuthenticated() {
+  return !!getToken();
+}
+
 async function request(url, options = {}) {
+  const token = getToken();
+
   const response = await fetch(url, {
     headers: {
       "Content-Type": "application/json",
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
       ...(options.headers || {})
     },
     ...options
@@ -24,6 +43,26 @@ async function request(url, options = {}) {
 
   return data;
 }
+
+/*
+  IMPORTANT:
+  Adjust these two auth routes only if your backend uses different paths.
+  Examples your backend might use:
+  /users/signup and /users/signin
+  OR
+  /auth/signup and /auth/signin
+*/
+export const signUpUser = (user) =>
+  request(`${BASE_URL}/auth/signup`, {
+    method: "POST",
+    body: JSON.stringify(user)
+  });
+
+export const signInUser = (credentials) =>
+  request(`${BASE_URL}/auth/login`, {
+    method: "POST",
+    body: JSON.stringify(credentials)
+  });
 
 // Projects
 export const getProjects = () => request(`${BASE_URL}/projects`);
